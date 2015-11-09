@@ -1,0 +1,20 @@
+{
+  "name": "animator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "animator.js",
+  "scripts": {
+    "test": "browserify tests/*.js | node | faucet"
+  },
+  "dependencies": {
+    "lerp": "^1.0.3",
+    "eases": "^1.0.6"
+  },
+  "author": "Greg Tatum",
+  "license": "MIT",
+  "devDependencies": {
+    "faucet": "0.0.1",
+    "tape": "^4.2.1",
+    "test-fuzzy-array": "^1.0.1"
+  }
+}
