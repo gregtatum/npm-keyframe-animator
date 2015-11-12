@@ -3,7 +3,7 @@ var Test = require('tape')
 var Animator = require('../animator')
 
 Test("Animator", function(t) {
-	
+
 	t.test( "updates property values", function(t) {
 		
 		t.plan(4)
@@ -31,6 +31,30 @@ Test("Animator", function(t) {
 		update(1500)
 		t.isEquivalent( scene.square.position, {x:2.5, y:0, z:0} )
 		
+	})
+
+	t.test( "updates array values", function(t) {
+		
+		t.plan(2)
+		
+		var keyframes = [
+			{
+				duration: 1,
+				actions: [
+					[ "square.color[0]", [0, 1] ],
+					[ "square.color[1]", [0, 0.1] ],
+					[ "square.color[2]", [0, 0] ],
+				],
+			}
+		]
+		var scene = Mocks.scene()
+		var update = Animator( scene, keyframes )
+
+		update(0)
+		t.isEquivalent( scene.square.color, [0,0,0] )
+		
+		update(500)
+		t.isEquivalent( scene.square.color, [0.5, 0.05, 0] )
 	})
 
 	t.test( "updates function values", function(t) {
@@ -61,7 +85,59 @@ Test("Animator", function(t) {
 		t.isEqual( scene.square.opacity, 0.75 )
 		
 	})
-	
+
+	t.test( "updates property values once if not a tuple", function(t) {
+		
+		t.plan(3)
+		
+		var keyframes = [
+			{
+				duration: 1,
+				actions: [
+					[ "square.position.x", 2 ],
+				],
+			}
+		]
+		var scene = Mocks.scene()
+		var update = Animator( scene, keyframes )
+
+		t.isEquivalent( scene.square.position, {x:0, y:0, z:0} )
+
+		update(0)
+		t.isEquivalent( scene.square.position, {x:2, y:0, z:0} )
+
+		scene.square.position.x = 5
+
+		update(500)
+		t.isEquivalent( scene.square.position, {x:5, y:0, z:0} )
+	})
+
+	t.test( "invokes functions once if not a tuple", function(t) {
+		
+		t.plan(3)
+		
+		var keyframes = [
+			{
+				duration: 1,
+				actions: [
+					[ "square.setOpacity", 0.5 ],
+				],
+			}
+		]
+		var scene = Mocks.scene()
+		var update = Animator( scene, keyframes )
+
+		t.isEqual( scene.square.opacity, 0 )
+
+		update(0)
+		t.isEqual( scene.square.opacity, 0.5 )
+
+		scene.square.opacity = 1
+
+		update(500)
+		t.isEqual( scene.square.opacity, 1 )
+	})
+
 	t.test( "can runOnce", function(t) {
 		
 		t.plan(8)

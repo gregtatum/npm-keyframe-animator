@@ -4,7 +4,11 @@
   "description": "",
   "main": "animator.js",
   "scripts": {
-    "test": "browserify tests/*.js | node | faucet"
+    "test": "browserify -t coverify tests/*.js | node | coverify | faucet",
+    "build-example": "browserify example/draw.js -o example/bundle.js",
+    "gh-pages": "mkdir -p ./gh-pages && cp -a ./example/. ./gh-pages",
+    "build": "npm run build-example && npm run gh-pages",
+    "dev-example": "budo -d example example/draw.js:bundle.js --live --verbose | garnish"
   },
   "dependencies": {
     "lerp": "^1.0.3",
@@ -13,6 +17,7 @@
   "author": "Greg Tatum",
   "license": "MIT",
   "devDependencies": {
+    "coverify": "^1.4.1",
     "faucet": "0.0.1",
     "tape": "^4.2.1",
     "test-fuzzy-array": "^1.0.1"

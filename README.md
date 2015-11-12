@@ -25,6 +25,7 @@ Set to true if the animation should only run through once.
 		actions:  [
 			[ "path.in.object", [<start>, <end>] ],
 			[ "path.in.object", <value> ],
+			[ "path.in.object" ],
 		],
 		
 		// Relative frames
@@ -53,7 +54,7 @@ Ignores all of the keyframes before this one. Useful for debugging and live-relo
 
 ### `actions`
 
-An array of actions to perform. Each action is composed of a dot-separated keypath into the main scene graph object, and the values of the action. The keypath can either point to a value or a function. If it's a value then the actions will be applied like `scene.key.path = value`. If the keypath points to a function then it will invoked with the value like `scene.key.path(value)`.
+An array of actions to perform. Each action is composed of a keypath into the main scene graph object, and the values of the action. The keypath can include dot separated values like `"key.path.position.x"` and array values like `"key.path.position[0]"`. The value at the keypath can either be a value or a function. If it's a value then the actions will be applied like `scene.key.path = value`. If the keypath points to a function then it will invoked with the value like `scene.key.path(value)`.
 
 #### `[ 'key.path', [valueStart, valueEnd] ]`
 
@@ -61,19 +62,44 @@ If the action value is an array, then the start and end values will be run throu
 
 #### `[ 'key.path', value ]`
 
-If the action is a single value, then every frame that the keyframe is in range, the property will be set to that value, or the function will be invoked with that value.
+If the action is a single value or undefined, then for the first frame that the keyframe is in range, the property will be set to that value, or the function will be invoked with that value.
 
-## Example initiation
+## Example usage
 
 	var animator = require('animator')
-	var sceneGraph = require('./sceneGraph')
-	var keyframes = require('./keyframes')
+	var drawScene = require('./draw-scene')
+	
+	var scene = {
+		square : new Square()
+	}
+	
+	var keyframes = [
+		{
+			duration : 2,
+			easing : "elastic-in",
+			actions : {
+				[ "square.position.x", [ 0, 100 ] ],
+				[ "square.position.y", [ 0, 100 ] ],
+				[ "square.opacity", [ 0, 1 ] ],
+			},
+		},
+		{
+			duration : 2,
+			easing : "elastic-out",
+			actions : {
+				[ "square.color[0]", [ 0, 1 ] ],
+				[ "square.color[1]", [ 1, 0 ] ],
+				[ "square.addStroke" ],
+				[ "square.setTextContents", "I'm trapped in a box!" ],
+			},
+		}
+	]
 	
 	var update = animator( sceneGraph, keyframes, runOnce )
 	
 	var start = Date.now()
 	function loop() {
-		update( Date.now() - start() )
+		update( Date.now() - start )
 		requestAnimationFrame(loop)
 	}
 	loop()

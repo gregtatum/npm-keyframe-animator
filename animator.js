@@ -1,5 +1,6 @@
-var Eases = require('eases')
-var Lerp = require('lerp')
+var Eases      = require('eases')
+var Lerp       = require('lerp')
+var ToPath     = require('./src/to-path')
 
 var _ = require('lodash')
 
@@ -47,25 +48,27 @@ function _updateFunctionValue( elapsed, prevElapsed, keyframe, action ) {
 	))
 }
 
+function _canUpdateOnce( keyframe, elapsed, prevElapsed) {
+	return keyframe.start > prevElapsed && keyframe.start <= elapsed
+}
+
 function _updateObjectValueOnce( elapsed, prevElapsed, keyframe, action ) {
 	
-	if( keyframe.start >= prevElapsed && keyframe.start < elapsed ) {
-		
+	if( _canUpdateOnce( keyframe, elapsed, prevElapsed) ) {
 		action.obj[action.key] = action.values
 	}
 }
 
 function _updateFunctionOnce( elapsed, prevElapsed, keyframe, action ) {
 	
-	if( keyframe.start >= prevElapsed && keyframe.start < elapsed ) {
-		
+	if( _canUpdateOnce( keyframe, elapsed, prevElapsed) ) {
 		action.obj[action.key]( action.values )
 	}
 }
 
 function _updateFn( keyframes, maxTime ) {
 	
-	var prevElapsed = 0
+	var prevElapsed = -1
 	
 	return function( elapsedMilliseconds ) {
 		
@@ -124,7 +127,7 @@ function _createAction( graph, action ) {
 	
 	// example action: [ "camera.object.position.x", [0, 10] ]
 	
-	var keyParts = action[0].split('.')
+	var keyParts = ToPath(action[0])
 	var path = keyParts.slice(0,keyParts.length - 1)
 	var key = Last(keyParts)
 	var values = action[1]
