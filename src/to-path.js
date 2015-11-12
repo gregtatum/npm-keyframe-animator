@@ -1,9 +1,6 @@
 // Adapted from the internals of lodash, see node_modules/lodash.isarray for license information
 
-var _ = require('lodash')
-var isArray = _.isArray
-console.warn('need to remove lodash dependency')
-// var isArray = require('lodash.isarray')
+var isArray = require('lodash.isarray')
 
 function baseToString(value) {
 	if (typeof value == 'string') {

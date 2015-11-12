@@ -1,4 +1,4 @@
-# Animator
+# Keyframe Animator
 
 Create keyframe animations programmatically with a list of actions, timings, and easings.
 

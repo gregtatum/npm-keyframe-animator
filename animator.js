@@ -1,30 +1,17 @@
-var Eases      = require('eases')
-var Lerp       = require('lerp')
-var ToPath     = require('./src/to-path')
+var Eases       = require('eases')
+var Lerp        = require('lerp')
+var ToPath      = require('./src/to-path')
 
-var _ = require('lodash')
-
-var Reduce      = _.reduce
-var Map         = _.map
-var Find        = _.find
-var IsString    = _.isString
-var IsFunction  = _.isFunction
-var IsArray     = _.isArray
-var IsNumber    = _.isNumber
-var IsObject    = _.isObject
-var Last        = _.last
-var Assign      = _.assign
-
-// var Reduce      = require('lodash.reduce')
-// var Map         = require('lodash.map')
-// var Find        = require('lodash.find')
-// var IsString    = require('lodash.isstring')
-// var IsFunction  = require('lodash.isfunction')
-// var IsArray     = require('lodash.isarray')
-// var IsNumber    = require('lodash.isnumber')
-// var IsObject    = require('lodash.isobject')
-// var Last        = require('lodash.last')
-// var Assign      = require('lodash.assign')
+var Reduce      = require('lodash.reduce')
+var Map         = require('lodash.map')
+var Find        = require('lodash.find')
+var IsString    = require('lodash.isstring')
+var IsFunction  = require('lodash.isfunction')
+var IsArray     = require('lodash.isarray')
+var IsNumber    = require('lodash.isnumber')
+var IsObject    = require('lodash.isobject')
+var Last        = require('lodash.last')
+var Assign      = require('lodash.assign')
 
 function _updateObjectValue( elapsed, prevElapsed, keyframe, action ) {
 	

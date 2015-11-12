@@ -1,24 +1,37 @@
 {
-  "name": "animator",
+  "name": "keyframe-animator",
   "version": "1.0.0",
-  "description": "",
+  "description": "Created programmatically with a list of actions, timings, and easings",
   "main": "animator.js",
   "scripts": {
-    "test": "browserify -t coverify tests/*.js | node | coverify | faucet",
+    "test": "browserify tests/*.js | node | faucet",
     "build-example": "browserify example/draw.js -o example/bundle.js",
     "gh-pages": "mkdir -p ./gh-pages && cp -a ./example/. ./gh-pages",
     "build": "npm run build-example && npm run gh-pages",
     "dev-example": "budo -d example example/draw.js:bundle.js --live --verbose | garnish"
   },
   "dependencies": {
+    "eases": "^1.0.6",
     "lerp": "^1.0.3",
-    "eases": "^1.0.6"
+    "lodash.assign": "^3.2.0",
+    "lodash.find": "^3.2.1",
+    "lodash.isarray": "^3.0.4",
+    "lodash.isfunction": "^3.0.6",
+    "lodash.isnumber": "^3.0.1",
+    "lodash.isobject": "^3.0.2",
+    "lodash.isstring": "^3.0.1",
+    "lodash.last": "^3.0.0",
+    "lodash.map": "^3.1.4",
+    "lodash.reduce": "^3.1.2"
   },
   "author": "Greg Tatum",
   "license": "MIT",
   "devDependencies": {
-    "coverify": "^1.4.1",
+    "@tatumcreative/color": "^1.1.2",
     "faucet": "0.0.1",
+    "gl-matrix": "^2.3.1",
+    "lodash": "^3.10.1",
+    "poem-loop": "^1.1.1",
     "tape": "^4.2.1",
     "test-fuzzy-array": "^1.0.1"
   }
