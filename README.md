@@ -2,6 +2,15 @@
 
 Create keyframe animations programmatically with a list of actions, timings, and easings.
 
+# Live Example
+
+<a href='https://tatumcreative.github.io/npm-keyframe-animator/'>
+	![Keyframe Animator Example](https://tatumcreative.github.io/npm-keyframe-animator/screenshot.jpg)
+</a>
+
+[Pentagons keyframe animated](https://tatumcreative.github.io/npm-keyframe-animator)
+
+
 	var update = animator( sceneGraph, keyframes, runOnce )
 	update( elapsedMilliseconds )
 
