@@ -35,7 +35,7 @@
     "programming-poem",
     "visualization",
     "game",
-    "art",
+    "art"
   ],
   "devDependencies": {
     "@tatumcreative/color": "^1.1.2",
