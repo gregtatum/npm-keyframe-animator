@@ -26,6 +26,17 @@
   },
   "author": "Greg Tatum",
   "license": "MIT",
+  "keywords": [
+    "keyframe",
+    "animation",
+    "animator",
+    "tween",
+    "easing",
+    "programming-poem",
+    "visualization",
+    "game",
+    "art",
+  ],
   "devDependencies": {
     "@tatumcreative/color": "^1.1.2",
     "faucet": "0.0.1",
