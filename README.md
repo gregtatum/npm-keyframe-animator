@@ -10,6 +10,7 @@ Create keyframe animations programmatically with a list of actions, timings, and
 
 [Pentagons keyframe animated](https://tatumcreative.github.io/npm-keyframe-animator)
 
+## Creating the Animator
 
 	var animator = require('keyframe-animator')
 	var update = animator( sceneGraph, keyframes, runOnce )
@@ -17,7 +18,7 @@ Create keyframe animations programmatically with a list of actions, timings, and
 
 ### `sceneGraph`
 
-The scene graph can be any type of object that represents your scene. The individual properties on this graph are accessed in the scene graph using "key.path" syntax.
+The scene graph can be any type of object that represents your scene. The individual properties on this graph are accessed in the scene graph using "key.path[0]" syntax.
 
 ### `keyframes`
 
