@@ -11,6 +11,7 @@ Create keyframe animations programmatically with a list of actions, timings, and
 [Pentagons keyframe animated](https://tatumcreative.github.io/npm-keyframe-animator)
 
 
+	var animator = require('keyframe-animator')
 	var update = animator( sceneGraph, keyframes, runOnce )
 	update( elapsedMilliseconds )
 
