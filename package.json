@@ -3,6 +3,14 @@
   "version": "1.0.0",
   "description": "Created programmatically with a list of actions, timings, and easings",
   "main": "animator.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TatumCreative/npm-keyframe-animator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TatumCreative/npm-keyframe-animator/issues"
+  },
+  "homepage": "https://github.com/TatumCreative/npm-keyframe-animator",
   "scripts": {
     "test": "browserify tests/*.js | node | faucet",
     "build-example": "browserify example/draw.js -o example/bundle.js",
