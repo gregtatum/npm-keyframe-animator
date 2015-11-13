@@ -1,6 +1,6 @@
 {
   "name": "keyframe-animator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Created programmatically with a list of actions, timings, and easings",
   "main": "animator.js",
   "repository": {
