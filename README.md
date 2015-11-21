@@ -1,5 +1,19 @@
 # Keyframe Animator
 
+[![build status][travis-image]][travis-url]
+[![stability][stability-image]][stability-url]
+[![NPM version][npm-image]][npm-url]
+[![Downloads][downloads-image]][downloads-url]
+
+[stability-image]: https://img.shields.io/badge/stability-stable-brightgreen.svg?style=flat-square
+[stability-url]: https://nodejs.org/api/documentation.html#documentation_stability_index
+[npm-image]: https://img.shields.io/npm/v/keyframe-animator.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/keyframe-animator
+[travis-image]: https://img.shields.io/travis/TatumCreative/npm-keyframe-animator/master.svg?style=flat-square
+[travis-url]: http://travis-ci.org/TatumCreative/npm-keyframe-animator
+[downloads-image]: http://img.shields.io/npm/dm/keyframe-animator.svg?style=flat-square
+[downloads-url]: https://npmjs.org/package/keyframe-animator
+
 Create keyframe animations programmatically with a list of actions, timings, and easings.
 
 # Live Example
